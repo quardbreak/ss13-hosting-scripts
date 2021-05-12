@@ -1,0 +1,29 @@
+#!/bin/bash
+if [ ! $1 ]
+	then
+		echo "No argument supplied for server start:"
+		echo " * First argument should contain folder path and dmb name."
+		exit 1	
+fi
+
+DMB_PATH=$1
+DMB_NAME=$1
+
+if [ ! $2 ]
+	then
+		echo "No argument supplied for server start:"
+		echo " * Second argument should contain server port."
+		exit 1
+fi
+
+DD_PORT=$2
+
+if [ $3 ]
+	then
+		$DMB=$3
+fi
+
+cd ./$DMB_PATH
+echo "Launching server $DMB_PATH with port $DD_PORT."
+nohup nice -n -20 DreamDaemon $DMB_NAME.dmb $DD_PORT -trusted -logself &
+exit 0
