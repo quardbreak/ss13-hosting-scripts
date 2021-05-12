@@ -1,0 +1,14 @@
+#!/bin/bash
+if [ ! $1 ]
+	then
+		echo "No argument supplied for build update:"
+		echo " * Argument should contain folder path."
+		exit 1
+fi
+
+DME_PATH=$1
+
+cd ./$1
+git pull --ff-only
+sh tools/build/build
+exit 0
