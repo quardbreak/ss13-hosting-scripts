@@ -1,0 +1,21 @@
+#!/bin/bash
+echo Input folder path.
+read bpath
+if [ ! $bpath ]
+    then
+        echo "No argument supplied for build backup:"
+        echo " * First argument should contain folder path."
+        exit 1    
+fi
+echo Input database name \(Optional\).
+read dbname
+if [ $dbname ]
+    then
+        mysqldump -u root -p $dbname > $bpath/database_$dbname.sql
+        zip -r -9 $bpath.zip $bpath/config $bpath/data $bpath/lib $bpath/database_$dbname.sql
+        echo Backup archive: $bpath.zip
+        exit 0
+fi
+zip -r -9 $bpath.zip $bpath/config $bpath/data $bpath/lib
+echo Backup archive: $bpath.zip
+exit 0
