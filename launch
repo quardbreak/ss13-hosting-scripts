@@ -20,7 +20,7 @@ DD_PORT=$2
 
 if [ $3 ]
 	then
-		$DMB=$3
+		$DMB_NAME=$3
 fi
 
 cd ./$DMB_PATH
