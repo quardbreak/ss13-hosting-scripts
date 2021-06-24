@@ -11,7 +11,7 @@ DME_NAME=$1
 
 if [ $2 ]
 	then
-		$DME_NAME=$2
+		DME_NAME=$2
 fi
 
 cd ./$DME_PATH
