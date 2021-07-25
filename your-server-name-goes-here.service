@@ -1,0 +1,17 @@
+[Unit]
+Description=DreamDaemon service for <codebase-name>
+Documentation=man:DreamDaemon
+Requires=mysql.service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/path/to/codebase
+ExecStart=DreamDaemon <dmb-name>.dmb 1234 -trusted -public -core -threads on -map-threads on -logself
+KillMode=control-group
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
